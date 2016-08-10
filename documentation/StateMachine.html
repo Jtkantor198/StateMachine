@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Class: StateMachine</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Class: StateMachine</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>StateMachine</h2>
+        
+            <div class="class-description">Provides safe transitions between states</div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+    <h2>Constructor</h2>
+    
+
+    <h4 class="name" id="StateMachine"><span class="type-signature"></span>new StateMachine<span class="signature">(canvas)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>canvas</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">canvas</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">canvas on which to draw board
+	<Attributes></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>states</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Array of all states.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>currentState</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The current state of the state machine.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>constructors</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Array of all constructor functions for all states.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>transitions</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Array of all transition functions for all states.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>destructors</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Array of all destructor functions for all states.
+	<Methods></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>start(string_state)</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Starts the StateMachine in the given state. (Calls contructors for that state)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>createState(string_state(s))</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Add state or list of states to the StateMachine. Ex: "state1, state2"</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>createTransition(string_transition,function_transition)</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Adds transition between two states or groups of states and a transition function which will be run during the transition (between the destructor and constructor). Ex: "(state1, state2) -> state3", "state1 <-> state2"</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>createConstructor(string_state(s),function_constructor)</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Adds a constructor for a state or list of states which will run when entering the state.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>createDestructor(string_state(s),function_destructor)</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Adds a destructor for a state or list of states which will run when leaving the state.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>transitionTo(state)</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Transitions to the provided state. Calls destructor(s) for currentState, transition function(s) to new state, and constructor(s) for new state.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>addParent(stateMachine,state)</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Adds a parentState (of another stateMachine, parentMachine) for this StateMachine so that the parentMachine will transtion to the given parentState when a transtionTo is called of this stateMachine.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="stateMachine.js.html">stateMachine.js</a>, <a href="stateMachine.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="StateMachine.html">StateMachine</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Tue Aug 09 2016 21:22:32 GMT-0400 (Eastern Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
